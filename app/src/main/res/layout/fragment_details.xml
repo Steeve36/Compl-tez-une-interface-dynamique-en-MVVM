@@ -46,15 +46,6 @@
             app:layout_constraintTop_toBottomOf="@id/image"
             tools:text="Restaurant Indien" />
 
-        <ImageView
-            android:id="@+id/etoiles"
-            android:layout_width="120dp"
-            android:layout_height="15dp"
-            android:src="@drawable/etoiles"
-            app:layout_constraintTop_toBottomOf="@+id/grade"
-            app:layout_constraintStart_toStartOf="@+id/grade"
-            app:layout_constraintEnd_toEndOf="@+id/grade"/>
-
 
         <com.google.android.material.chip.ChipGroup
             android:id="@+id/group"
@@ -102,22 +93,32 @@
             android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
+            android:layout_marginStart="18dp"
             android:fontFamily="@font/jakarta_semibold"
             android:textSize="36sp"
             android:textAlignment="center"
-            android:textColor="@color/grey"
+            android:textColor="#666666"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/tvRestaurantType"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvRestaurantName"
             app:layout_constraintEnd_toEndOf="@+id/tvRestaurantType"
             tools:text="4.0" />
+
+        <ImageView
+            android:id="@+id/etoiles"
+            android:layout_width="110dp"
+            android:layout_height="15dp"
+            android:src="@drawable/etoiles"
+            app:layout_constraintTop_toBottomOf="@+id/grade"
+            app:layout_constraintStart_toStartOf="@+id/grade"
+            app:layout_constraintEnd_toEndOf="@+id/grade"/>
 
         <TextView
             android:id="@+id/numberReviews"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="12sp"
-            android:textColor="@color/grey"
+            android:textColor="#666666"
             android:textAlignment="center"
             android:layout_marginTop="15dp"
             tools:text="(257)"
@@ -225,7 +226,7 @@
             android:textSize="12sp"
             app:layout_constraintStart_toEndOf="@id/icon_hours"
             app:layout_constraintTop_toBottomOf="@+id/separator"
-            tools:text="Mardi" />
+            tools:text="Lundi" />
 
         <TextView
             android:id="@+id/tvRestaurantHours"
