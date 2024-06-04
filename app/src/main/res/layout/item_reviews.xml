@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="16dp">
+
+
+    <ImageView
+        android:id="@+id/profileUser"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/photo_profile"/>
+
+    <TextView
+        android:id="@+id/userName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/profileUser"
+        app:layout_constrainTop_toTopOf="+@id/profileUser"
+        android:text="Manon Garcia"
+        android:textSize="18sp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginBottom="15dp"/>
+
+    <ImageView
+        android:id="@+id/etoiles"
+        android:layout_width="130dp"
+        android:layout_height="30dp"
+        android:src="@drawable/etoiles"
+        app:layout_constraintStart_toEndOf="@+id/profileUser"
+        app:layout_constraintTop_toBottomOf="@+id/userName"
+        android:layout_marginStart="15dp" />
+
+
+    <TextView
+        android:id="@+id/reviewField"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profileUser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Service très rapide et nourriture délicieuse, nous mangeons ici chaque week-end, c'est très rapide et savoureux. Continuez ainsi!"
+        android:layout_marginTop="10dp"
+        android:textSize="15sp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
