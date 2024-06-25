@@ -141,7 +141,7 @@
                 android:layout_height="5dp"
                 android:layout_weight="1"
                 android:progress="100"
-                android:background="@color/yellow" />
+                app:indicatorColor="@color/yellow" />
 
             <com.google.android.material.progressindicator.LinearProgressIndicator
                 android:id="@+id/progressBar2"
@@ -149,7 +149,7 @@
                 android:layout_height="5dp"
                 android:layout_weight="1"
                 android:progress="80"
-                android:backgroundTintMode="@color/yellow" />
+                app:indicatorColor="@color/yellow"/>
 
             <com.google.android.material.progressindicator.LinearProgressIndicator
                 android:id="@+id/progressBar3"
@@ -157,7 +157,7 @@
                 android:layout_height="5dp"
                 android:layout_weight="1"
                 android:progress="60"
-                android:backgroundTint="@color/yellow" />
+                app:indicatorColor="@color/yellow" />
 
             <com.google.android.material.progressindicator.LinearProgressIndicator
                 android:id="@+id/progressBar4"
@@ -165,7 +165,7 @@
                 android:layout_height="5dp"
                 android:layout_weight="1"
                 android:progress="30"
-                android:indeterminateTint="@color/yellow" />
+                app:indicatorColor="@color/yellow" />
 
             <com.google.android.material.progressindicator.LinearProgressIndicator
                 android:id="@+id/progressBar5"
@@ -173,7 +173,7 @@
                 android:layout_height="5dp"
                 android:layout_weight="1"
                 android:progress="45"
-                android:indeterminateTint="@color/yellow" />
+                app:indicatorColor="@color/yellow" />
 
         </com.google.android.material.chip.ChipGroup>
 
@@ -181,7 +181,7 @@
             android:id="@+id/submitReview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="Laisser un avis"
+            android:text="Laisser un avis"
             android:textStyle="bold"
             android:fontFamily="@font/jakarta_regular"
             android:textColor="@color/grey"
@@ -189,19 +189,17 @@
             app:layout_constraintTop_toBottomOf="@+id/barReviews"
             app:layout_constraintEnd_toEndOf="parent"/>
 
-
         <View
             android:id="@+id/separator"
             android:layout_width="0dp"
             android:layout_height="0.75dp"
             android:layout_marginHorizontal="20dp"
             android:layout_marginTop="20dp"
-
             android:background="#DADADA"
             app:layout_constraintBottom_toTopOf="@+id/tvRestaurantHours"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/numberReviews" />
+            app:layout_constraintTop_toBottomOf="@id/submitReview" />
 
         <ImageView
             android:id="@+id/icon_hours"
@@ -348,7 +346,6 @@
             android:layout_height="wrap_content"
             android:layout_margin="12dp"
             android:contentDescription="@string/button_phone"
-
             android:focusable="true"
             android:padding="8dp"
             android:src="@drawable/baseline_arrow_forward_12"

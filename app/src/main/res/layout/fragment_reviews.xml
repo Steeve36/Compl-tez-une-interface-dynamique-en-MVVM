@@ -20,8 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toEndOf="@+id/profileUser"
-        app:layout_constrainTop_toTopOf="+@id/profileUser"
-        tools:context="Manon Garcia"
+        tools:text="Manon Garcia"
         android:textSize="18sp"
         android:layout_marginLeft="15dp"
         android:layout_marginBottom="15dp"/>
@@ -30,13 +29,13 @@
         android:id="@+id/ratingBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
         android:numStars="5"
-        android:rating="3"
         android:progressTint="@color/yellow"
-        app:layout_constraintTop_toBottomOf="@+id/userName"
+        android:rating="3"
         app:layout_constraintStart_toEndOf="@+id/profileUser"
-        app:layout_constraintEnd_toStartOf="@+id/submitReview"
-        android:progressDrawable="@drawable/ic_custom_star"/>
+        app:layout_constraintTop_toBottomOf="@+id/userName"
+        style="?android:attr/ratingBarStyleSmall"/>
 
     <Button
         android:id="@+id/submitReview"
@@ -44,7 +43,6 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="20dp"
         android:text="Valider"
         android:backgroundTint="@color/red" />
 
@@ -53,14 +51,13 @@
         android:id="@+id/reviewField"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/borders"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ratingBar" >
+        app:layout_constraintTop_toBottomOf="@+id/submitReview">
         
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Partagez ici les détails de votre
+            android:layout_height="match_parent"
+            tools:text="Partagez ici les détails de votre
             expérience"
             android:textColor="@color/grey"
             android:minHeight="80dp"

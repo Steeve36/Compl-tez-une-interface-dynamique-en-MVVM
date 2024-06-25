@@ -1,5 +1,6 @@
 package com.openclassrooms.tajmahal.ui.restaurant;
 
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
@@ -8,8 +9,10 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -80,6 +83,20 @@ public class DetailsFragment extends Fragment {
         binding = FragmentDetailsBinding.inflate(inflater, container, false); // Binds the layout using view binding.
         return binding.getRoot(); // Returns the root view.
     }
+
+    // Détecter le clic du bouton submitReview pour aller sur la page des avis
+        binding.submitReview.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View) {
+                // Naviger vers le fragement Review
+                Log.d("Steeve", "Clic !");
+        FragmentManager fragmentManager = getChildFragmentManager();
+        FragmentTransaction fragmentTransaction = FragmentManager.beginTransaction();
+        FragmentReview fragmentReview = new FragmentReview();
+        fragmentTransaction.replace(R.id.container,fragmentReview);
+        fragmentTransaction.commit();
+        }
+    });
 
 
     /**
