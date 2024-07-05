@@ -17,9 +17,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.openclassrooms.tajmahal.R;
+import com.openclassrooms.tajmahal.ReviewsFragment;
 import com.openclassrooms.tajmahal.databinding.FragmentDetailsBinding;
 import com.openclassrooms.tajmahal.domain.model.Restaurant;
 
@@ -47,10 +49,9 @@ public class DetailsFragment extends Fragment {
      * @param savedInstanceState A bundle containing previously saved instance state.
      * If the fragment is being re-created from a previous saved state, this is the state.
      */
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
+
+
+
 
     /**
      * This method is called immediately after `onCreateView()`.
@@ -59,6 +60,28 @@ public class DetailsFragment extends Fragment {
      * @param view The View returned by `onCreateView()`.
      * @param savedInstanceState If non-null, this fragment is being re-constructed
      * from a previous saved state as given here.
+     *
+     *     ESSAI POUR PASSER DU FRAGMENT DETAILS FRAGMENT à REVIEWS FRAGMENT
+     *
+     *     Button btn_editReview;
+     *     @Override
+     *     public void onCreate(Bundle savedInstanceState) {
+     *         super.onCreate(savedInstanceState);
+     *
+     *         btn_editReview = (Button) findViewById(R.id.editReview);
+     *
+     *         btn_editReview.setOnClickListener(new View.OnClickListener() {
+     *             @Override
+     *             public void onClick(View view) {
+     *                 Intent intent = new Intent(DetailsFragment.this, ReviewsFragment.class);
+     *             }
+     *         });
+     *     }
+     *
+     *     private Object findViewById(int editReview) {
+     *         return null;
+     *     }
+     *
      */
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -66,7 +89,10 @@ public class DetailsFragment extends Fragment {
         setupUI(); // Sets up user interface components.
         setupViewModel(); // Prepares the ViewModel for the fragment.
         detailsViewModel.getTajMahalRestaurant().observe(requireActivity(), this::updateUIWithRestaurant); // Observes changes in the restaurant data and updates the UI accordingly.
+
     }
+
+
 
     /**
      * Creates and returns the view hierarchy associated with the fragment.
@@ -82,21 +108,23 @@ public class DetailsFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = FragmentDetailsBinding.inflate(inflater, container, false); // Binds the layout using view binding.
         return binding.getRoot(); // Returns the root view.
+
     }
 
-    // Détecter le clic du bouton submitReview pour aller sur la page des avis
-        binding.submitReview.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View) {
-                // Naviger vers le fragement Review
-                Log.d("Steeve", "Clic !");
-        FragmentManager fragmentManager = getChildFragmentManager();
-        FragmentTransaction fragmentTransaction = FragmentManager.beginTransaction();
-        FragmentReview fragmentReview = new FragmentReview();
-        fragmentTransaction.replace(R.id.container,fragmentReview);
-        fragmentTransaction.commit();
-        }
-    });
+
+    private void initButton() {
+        // Détecter le clic du bouton editReview pour aller sur la page des avis
+       binding.editReview.setOnClickListener( view -> {
+           requireActivity().getSupportFragmentManager().beginTransaction()
+                   .replace(R.id.container, ReviewsFragment.newInstance())
+                   .commit();
+    });}
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        detailsViewModel.getTajMahalRestaurant().observe(requireActivity(), this::updateUIWithRestaurant); // Observes changes in the restaurant data and updates the UI accordingly.
+    }
 
 
     /**

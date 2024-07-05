@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.openclassrooms.tajmahal.data.service.RestaurantApi;
 import com.openclassrooms.tajmahal.domain.model.Restaurant;
+import com.openclassrooms.tajmahal.domain.model.Review;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -49,6 +50,10 @@ public class RestaurantRepository {
      */
     public LiveData<Restaurant> getRestaurant() {
         return new MutableLiveData<>(restaurantApi.getRestaurant());
+    }
+
+    public LiveData<Review> addReview() {
+        restaurantApi.getReviews().add( )
     }
 
 }
