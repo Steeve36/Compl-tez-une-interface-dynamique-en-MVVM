@@ -66,11 +66,7 @@ public class RestaurantFakeApi implements RestaurantApi {
      *
      * @return The hard-coded list {@link Review} for the "Taj Mahal".
      */
-    @Override
-    public List<Review> getReviews() {
-        reviews.add(new Review );
-        return reviews;
-    }
+
 
     // Ajoute un élément dans la base de donnés (la liste de reviews)
     public void addReview(Review review) {

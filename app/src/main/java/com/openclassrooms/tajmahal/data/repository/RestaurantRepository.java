@@ -52,8 +52,8 @@ public class RestaurantRepository {
         return new MutableLiveData<>(restaurantApi.getRestaurant());
     }
 
-    public LiveData<Review> addReview() {
-        restaurantApi.getReviews().add( )
-    }
+    // public LiveData<Review> addReview() {
+    //     restaurantApi.getReviews().add( );
+   //  }
 
 }

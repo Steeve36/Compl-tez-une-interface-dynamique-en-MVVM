@@ -90,6 +90,7 @@ public class DetailsFragment extends Fragment {
         setupViewModel(); // Prepares the ViewModel for the fragment.
         detailsViewModel.getTajMahalRestaurant().observe(requireActivity(), this::updateUIWithRestaurant); // Observes changes in the restaurant data and updates the UI accordingly.
 
+        initButton();
     }
 
 
@@ -110,7 +111,6 @@ public class DetailsFragment extends Fragment {
         return binding.getRoot(); // Returns the root view.
 
     }
-
 
     private void initButton() {
         // Détecter le clic du bouton editReview pour aller sur la page des avis
