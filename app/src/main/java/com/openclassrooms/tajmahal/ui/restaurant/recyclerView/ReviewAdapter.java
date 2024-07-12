@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,73 +13,73 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestManager;
 import com.openclassrooms.tajmahal.R;
+import com.openclassrooms.tajmahal.ReviewsFragment;
+import com.openclassrooms.tajmahal.domain.model.Review;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ViewHolder> {
+public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ReviewViewHolder> {
 
-    private final Context context;
-    private final ArrayList<Integer> integerArrayList;
+    private final List<Review> reviewList;
 
-    private RequestManager glide;
+    public ReviewAdapter(List<Review> reviewList) {
+        this.reviewList = reviewList;
+    }
 
-    public ReviewAdapter(Context context, ArrayList<Integer> integerArrayList) {
-        this.context = context;
-        this.integerArrayList = integerArrayList;
-        this.glide = glide;
+
+    // RETURN THE TOTAL COUNT OF ITEMS IN THE LIST
+    @Override
+    public int getItemCount() {
+        return this.reviewList.size();
+    }
+
+    @Override
+    public ReviewViewHolder onCreatViewHolder(ViewGroup parent, int viewType) {
+        // HERE WE CREATE VIEW HOLDER AND INFLATE HIS IT XML LAYOUT
+        Context context = parent.getContext();
+        LayoutInflater inflater = LayoutInflater.from(context);
+        View view = inflater.inflate(R.layout.item_reviews, parent, false);
+
+        return new ReviewViewHolder(view);
     }
 
     @NonNull
     @Override
-    public ReviewAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(
-                R.layout.single_image_recycler_adapter,parent, false);
-        return new ViewHolder(view);
+    public ReviewViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return null;
     }
 
+    // UPDATE VIEW HOLDER WITH A NEW INFO (REVIEW)
     @Override
-    public void onBindViewHolder(@NonNull ReviewAdapter.ViewHolder holder, int position) {
-
-        // Utiliser Glide ici pour montrer les images
-        Glide.with(context)
-                .load(integerArrayList.get(position))
-                .into(holder.imageView);
+    public void onBindViewHolder(ReviewViewHolder viewHolder, int position) {
+        viewHolder.updateReview(this.reviewList.get(position));
     }
 
-    @Override
-    public int getItemCount() {
-        return integerArrayList.size();
-    }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
 
-        ImageView imageView;
-        public ViewHolder(@NonNull View itemView) {
+
+    public class ReviewViewHolder extends RecyclerView.ViewHolder {
+
+        TextView username;
+        ImageView imageUser;
+
+        public ReviewViewHolder(View itemView) {
             super(itemView);
-            imageView = itemView.findViewById(R.id.profileUser);
+
+            username = itemView.findViewById(R.id.userName);
+            imageUser = itemView.findViewById(R.id.profileUser);
+
+            Review review;
+            View context;
+            Glide.with(context)
+                    .load(review.getPicture())
+                    .into(this.imageUser);
         }
+
+        public void updateReview(Review review) {
+            this.username.setText(review.getUsername());
+        }
+
     }
-
-
-    /**
-     * AUTRE CODE PRECEDEMENT MIS
-     *
-     * public class ReviewViewHolder extends RecyclerView.ViewHolder {
-     *
-     *     TextView userName = (TextView) itemView.findViewById( R.id.userName );
-     *     TextView reviewField = (TextView) itemView.findViewById( R.id.reviewField);
-     *
-     *     ImageView profileUser = (ImageView) imageView.findViewById( R.id.profileUser)
-     *
-     *     public ReviewViewHolder(View itemView) {
-     *         super(itemView);
-     *     }
-     *
-     *     public void Review (Review review){
-     *         this.userName.setText(review.getUsername());
-     *         this.reviewField.setText(review.getComment());
-     *     }
-     * }
-     *
-     */
 }
