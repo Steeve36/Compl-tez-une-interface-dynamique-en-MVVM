@@ -73,4 +73,7 @@ public class RestaurantFakeApi implements RestaurantApi {
         reviews.add( review );
     }
 
+    public List<Review> getReviews() {
+        return reviews;
+    }
 }
