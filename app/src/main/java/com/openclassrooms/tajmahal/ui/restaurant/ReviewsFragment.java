@@ -28,7 +28,6 @@ public class ReviewsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_reviews, container, false );
 
-        reviewsViewModel.getReviews().observe(requireActivity(), this::initRecyclerView);
     }
 
     public void initRecyclerView(List<Review> reviews) {
