@@ -4,16 +4,14 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
 import com.openclassrooms.tajmahal.R;
 import com.openclassrooms.tajmahal.domain.model.Review;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ReviewAdapter extends RecyclerView.Adapter<ReviewViewHolder> {
@@ -22,7 +20,7 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewViewHolder> {
     private List<Review> reviewList;
 
     // THIS IS THE CONSTRUCTOR
-    public ReviewAdapter(List<Review> reviewList) {
+    public ReviewAdapter(ArrayList<String> reviewList) {
         this.reviewList = reviewList;
     }
 

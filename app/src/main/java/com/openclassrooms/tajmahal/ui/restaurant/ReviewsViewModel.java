@@ -30,5 +30,10 @@ public class ReviewsViewModel extends ViewModel {
 
     public LiveData<List<Review>> getReviews() {
         return restaurantRepository.getReviews();
+
+    }
+
+    public void addReviews(Review review) {
+        restaurantRepository.addReview(review);
     }
 }
