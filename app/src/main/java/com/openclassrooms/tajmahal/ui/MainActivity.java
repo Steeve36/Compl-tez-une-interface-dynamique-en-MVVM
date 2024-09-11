@@ -15,6 +15,7 @@ import android.widget.EditText;
 
 import com.openclassrooms.tajmahal.R;
 import com.openclassrooms.tajmahal.databinding.ActivityMainBinding;
+import com.openclassrooms.tajmahal.domain.model.Review;
 import com.openclassrooms.tajmahal.ui.restaurant.DetailsFragment;
 import com.openclassrooms.tajmahal.ui.restaurant.recyclerView.ReviewAdapter;
 
@@ -49,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
                     .commitNow();
         }
         addReview = findViewById(R.id.reviewField);
-        submitReview = findViewById(R.id.submitReviewButton);
+        submitReview = findViewById(R.id.submitReview);
         recyclerView = findViewById(R.id.viewRecyclerView);
 
         arrayAdapter = new ArrayAdapter<>(this, R.layout.item_reviews, R.id.recyclerView);
@@ -58,14 +59,21 @@ public class MainActivity extends AppCompatActivity {
         ReviewAdapter reviewAdapter = new ReviewAdapter(reviewArrayList);
         recyclerView.setAdapter(reviewAdapter);
         submitReview.setOnClickListener(new View.OnClickListener() {
+
+
             @Override
             public void onClick(View view) {
                 String review = addReview.getText().toString().trim();
                 if (!review.isEmpty()) {
+                    Review newReview = new Review("", "", review, 5);
+
+                    reviewViewModel.addReview(newReview);
                     reviewArrayList.add(review);
-                    reviewAdapter.notifyDataSetChanged();
+                    recyclerView.notifyDataSetChanged();
                 }
             }
         });
     }
+
+
 }
