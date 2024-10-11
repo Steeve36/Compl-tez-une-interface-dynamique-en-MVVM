@@ -20,7 +20,7 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewViewHolder> {
     private List<Review> reviewList;
 
     // THIS IS THE CONSTRUCTOR
-    public ReviewAdapter(ArrayList<String> reviewList) {
+    public ReviewAdapter(List<Review> reviewList) {
         this.reviewList = reviewList;
     }
 

@@ -29,14 +29,6 @@ public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
 
-    // Création des variables
-    EditText addReview; // editTextNote
-    Button submitReview; // addNoteButton
-    RecyclerView recyclerView; // noList
-
-    // Création d'une liste dynamique
-    ArrayList<String>reviewArrayList = new ArrayList<>();
-    ArrayAdapter<String> arrayAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,30 +41,7 @@ public class MainActivity extends AppCompatActivity {
                     .replace(R.id.container, DetailsFragment.newInstance())
                     .commitNow();
         }
-        addReview = findViewById(R.id.reviewField);
-        submitReview = findViewById(R.id.submitReview);
-        recyclerView = findViewById(R.id.viewRecyclerView);
 
-        arrayAdapter = new ArrayAdapter<>(this, R.layout.item_reviews, R.id.recyclerView);
-
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        ReviewAdapter reviewAdapter = new ReviewAdapter(reviewArrayList);
-        recyclerView.setAdapter(reviewAdapter);
-        submitReview.setOnClickListener(new View.OnClickListener() {
-
-
-            @Override
-            public void onClick(View view) {
-                String review = addReview.getText().toString().trim();
-                if (!review.isEmpty()) {
-                    Review newReview = new Review("", "", review, 5);
-
-                    reviewViewModel.addReview(newReview);
-                    reviewArrayList.add(review);
-                    recyclerView.notifyDataSetChanged();
-                }
-            }
-        });
     }
 
 
