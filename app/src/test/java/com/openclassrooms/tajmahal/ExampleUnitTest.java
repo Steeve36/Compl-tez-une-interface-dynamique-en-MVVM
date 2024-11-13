@@ -14,6 +14,9 @@ import javax.annotation.Nullable;
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 public class ExampleUnitTest {
+    private Object addReview;
+    private String addReviewValue;
+
     @Test
     public void addition_isCorrect() {
         assertEquals(4, 2 + 2);
@@ -26,7 +29,21 @@ public class ExampleUnitTest {
         // Check the review actually say in comment "Super restaurant !"
         assertEquals("Super restaurant !", review.getComment());
 
-//        assertThrows("Super restaurant !", review.getComment());
+        // assertThrows("Super restaurant !", review.getComment());
     }
 
+    @Test
+    public void whenReviewIsValid() {
+
+        // Simuler la valeur de la ratingBar et du champ
+        Object addReview1 = addReview;
+        float ratingBarValue = 1.0f; // Simuler une valeur inférieure à 0 String
+        String addReviewValue = "Texte de la review"; // Simuler un champ de texte rempli
+
+        // Vérifier si la ratingBar est supérieure à 0 et si le champ addReview n'est pas vide
+        boolean isValidReview = (ratingBarValue > 0) && !addReviewValue.isEmpty();
+
+        // Assertion du test
+        assertTrue(isValidReview);
+    }
 }

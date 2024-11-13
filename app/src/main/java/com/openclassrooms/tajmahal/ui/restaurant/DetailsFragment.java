@@ -1,6 +1,4 @@
 package com.openclassrooms.tajmahal.ui.restaurant;
-
-import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
@@ -9,15 +7,12 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProvider;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.widget.Button;
 import android.widget.Toast;
 
 import com.openclassrooms.tajmahal.R;
@@ -114,10 +109,12 @@ public class DetailsFragment extends Fragment {
 
     private void initButton() {
         // Détecter le clic du bouton editReview pour aller sur la page des avis
-       binding.editReview.setOnClickListener( view -> {
-           requireActivity().getSupportFragmentManager().beginTransaction()
-                   .replace(R.id.container, ReviewsFragment.newInstance())
-                   .commit();
+        binding.editReview.setOnClickListener(view -> {
+            requireActivity().getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.container, ReviewsFragment.newInstance())
+                    .addToBackStack(null)
+                    .commit();
+
     });}
 
     @Override
